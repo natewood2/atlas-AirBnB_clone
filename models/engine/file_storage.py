@@ -2,6 +2,7 @@
 """ File Storage using JSON. """
 import json
 import os
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -29,6 +30,5 @@ class FileStorage:
             with open(FileStorage.__file_path, 'r') as filename:
                 data = json.load(filename)
             for key, value in data.items():
-                class_name, obj_id = key.split('.')
-                obj_instance = eval(class_name).from_dict(value)
+                obj_instance = BaseModel.from_dict(value)
                 FileStorage.__objects[key] = obj_instance
