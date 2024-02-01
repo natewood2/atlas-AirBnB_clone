@@ -8,9 +8,9 @@ Base Model Class for AirBnB: The Console
 
 class BaseModel:
     """ Base Class for The Console. """
-    def __init__(self, id=0):
+    def __init__(self, id=None):
         """ Init for the BaseModel Class. """
-        self.id = uuid.uuid4() if id is None else id
+        self.id = id if id is not None else uuid.uuid4()
         self.created_at = datetime.datetime.now()
         self.updated_at = datetime.datetime.now()
 
