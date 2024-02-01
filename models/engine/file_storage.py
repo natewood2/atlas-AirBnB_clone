@@ -27,9 +27,8 @@ class FileStorage:
         """Reloads"""
         if os.path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, 'r') as filename:
-                data = json.load(filename):
+                data = json.load(filename)
             for key, value in data.items():
                 class_name, obj_id = key.split('.')
                 obj_instance = eval(class_name).from_dict(value)
                 FileStorage.__objects[key] = obj_instance
-        
