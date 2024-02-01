@@ -1,16 +1,16 @@
 #!/usr/bin/python3
-import uuid
-import datetime
 """
 Base Model Class for AirBnB: The Console
 """
+import uuid
+import datetime
 
 
 class BaseModel:
     """ Base Class for The Console. """
-    def __init__(self, id=None):
+    def __init__(self):
         """ Init for the BaseModel Class. """
-        self.id = id if id is not None else uuid.uuid4()
+        self.id = str(uuid.uuid4())
         self.created_at = datetime.datetime.now()
         self.updated_at = datetime.datetime.now()
 
