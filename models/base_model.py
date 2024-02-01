@@ -44,4 +44,3 @@ class BaseModel:
         dict_copy['created_at'] = self.created_at.isoformat()
 
         return dict_copy
-
