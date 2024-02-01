@@ -28,7 +28,6 @@ class BaseModel:
 
     def to_dict(self):
         """ Converts the instance into a dictionary for serialization. """
-        self.save()
         attr_order = [
             'my_number',
             'name',
