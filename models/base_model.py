@@ -16,7 +16,7 @@ class BaseModel:
 
     def __str__(self):
         """ Returns a string representation of the instance. """
-        return f"[self.__class__.__name__] ({self.id}) {self.__dict__}"
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
         """
@@ -33,3 +33,5 @@ class BaseModel:
 
         dict_copy['updated_at'] = self.updated_at.isoformat()
         dict_copy['created_at'] = self.created_at.isoformat()
+
+        return dict_copy
