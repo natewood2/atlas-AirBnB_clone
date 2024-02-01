@@ -1,18 +1,26 @@
 #!/usr/bin/python3
-import uuid
-import datetime
 """
 Base Model Class for AirBnB: The Console
 """
+import uuid
+import datetime
 
 
 class BaseModel:
     """ Base Class for The Console. """
-    def __init__(self, id=None):
+    def __init__(self, *args, **kwargs):
         """ Init for the BaseModel Class. """
-        self.id = id if id is not None else uuid.uuid4()
-        self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
+        if kwargs:
+            for key, value in kwargs.items():
+                if key == '__class__':
+                    continue
+                elif key in ['created_at', 'updated_at']:
+                    value = datetime.datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                setattr(self, key, value)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
 
     def __str__(self):
         """ Returns a string representation of the instance. """
@@ -28,20 +36,12 @@ class BaseModel:
 
     def to_dict(self):
         """ Converts the instance into a dictionary for serialization. """
-        attr_order = [
-            'my_number',
-            'name',
-            '__class__',
-            'updated_at',
-            'id',
-            'created_at',
-        ]
-
-        dict_copy = {key: getattr(self, key) for key in attr_order}
+        dict_copy = {}
+        for a in vars(self):
+            dict_copy.update({a: getattr(self, a)})
         dict_copy['__class__'] = self.__class__.__name__
 
         dict_copy['updated_at'] = self.updated_at.isoformat()
         dict_copy['created_at'] = self.created_at.isoformat()
 
         return dict_copy
-
