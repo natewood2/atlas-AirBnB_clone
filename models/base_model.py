@@ -28,7 +28,16 @@ class BaseModel:
 
     def to_dict(self):
         """ Converts the instance into a dictionary for serialization. """
-        dict_copy = self.__dict__.copy()
+        attr_order = [
+            'my_number',
+            'name',
+            '__class__',
+            'updated_at',
+            'id',
+            'created_at',
+        ]
+
+        dict_copy = {key: getattr(self, key) for key in attr_order}
         dict_copy['__class__'] = self.__class__.__name__
 
         dict_copy['updated_at'] = self.updated_at.isoformat()
