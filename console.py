@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 """ THE CONSOLE. """
 import cmd
+from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
     """ cmd module. """
     prompt = '(hbnb) '
 
-    def create(self, args):
+    def do_create(self, args):
         """ Creates a new instance of BaseModel, saves it 
         (to the JSON file) and prints the id. 
         """
