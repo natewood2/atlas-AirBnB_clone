@@ -2,6 +2,8 @@
 """ THE CONSOLE. """
 import cmd
 from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
+import models
 
 
 class HBNBCommand(cmd.Cmd):
@@ -24,6 +26,23 @@ class HBNBCommand(cmd.Cmd):
             instance.save()
         except:
             print("** class doesn't exist **")
+
+    def do_show(self, args):
+        command = args.partition(" ")
+        model = command[0]
+        id = command[2]
+        if len(args) == 0:
+            print("** class name missing **")
+            return
+        elif not id:
+            print("** instance id missing **")
+            return
+        key = model + "." + id
+        print(key)
+        try:
+            print(models.FileStorage.__objects[key])
+        except:
+            print("** no instance found **")
 
     def do_quit(self, arg):
             return True
