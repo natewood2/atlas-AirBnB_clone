@@ -9,17 +9,17 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
 
     def do_create(self, args):
-        """ Creates a new instance of BaseModel, saves it 
-        (to the JSON file) and prints the id. 
+        """ Creates a new instance of BaseModel, saves it
+        (to the JSON file) and prints the id.
         """
-        arguments = args.split()
 
         if len(args) == 0:
             print("** class name missing **")
             return
 
         try:
-            instance = eval(arguments[0])
+            model = eval(args)
+            instance = model()
             instance.save()
             print(instance.id)
         except:
