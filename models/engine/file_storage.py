@@ -16,7 +16,8 @@ class FileStorage:
 
     def new(self, obj):
         """OBJ"""
-        FileStorage.__objects.update({f"{obj.__class__.__name__}.{obj.id}" : obj})
+        key = f"{obj.__class__.__name__}.{obj.id}"
+        FileStorage.__objects[key] = obj
 
     def save(self):
         """Save to file"""
@@ -26,7 +27,7 @@ class FileStorage:
 
     def reload(self):
         """Reloads"""
-        try: 
+        try:
             with open(self.__file_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
                 for key, value in data.items():
