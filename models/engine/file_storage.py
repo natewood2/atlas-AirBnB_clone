@@ -7,8 +7,8 @@ from models.base_model import BaseModel
 
 class FileStorage:
     """ Document. """
-    __file_path = "file.json"
     __objects = {}
+    __file_path = "file.json"
 
     def all(self):
         """All."""
@@ -20,8 +20,8 @@ class FileStorage:
 
     def save(self):
         """Save to file"""
-        obj_dict = {key: obj.to_dict() for key, obj in FileStorage.__objects.items()}
-        with open(FileStorage.__file_path, 'w') as filename:
+        obj_dict = {key: obj.to_dict() for key, obj in self.__objects.items()}
+        with open(self.__file_path, 'w') as filename:
             json.dump(obj_dict, filename)
 
     def reload(self):

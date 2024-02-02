@@ -25,7 +25,7 @@ class HBNBCommand(cmd.Cmd):
         except:
             print("** class doesn't exist **")
 
-    def do_quit(self, arg):
+    def do_quit(self, args):
             return True
 
     def do_EOF(self, arg):
