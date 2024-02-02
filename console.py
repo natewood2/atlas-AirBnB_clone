@@ -2,8 +2,7 @@
 """ THE CONSOLE. """
 import cmd
 from models.base_model import BaseModel
-from models.engine.file_storage import FileStorage
-import models
+from models.__init__ import storage
 
 
 class HBNBCommand(cmd.Cmd):
@@ -38,9 +37,8 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return
         key = model + "." + id
-        print(key)
         try:
-            print(models.FileStorage.__objects[key])
+            print(storage._FileStorage__objects[key])
         except:
             print("** no instance found **")
 
