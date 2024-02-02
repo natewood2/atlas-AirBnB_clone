@@ -26,13 +26,11 @@ class FileStorage:
 
     def reload(self):
         """Reloads"""
-        self.__objects.clear()
-        if os.path.exists(FileStorage.__file_path):
-            with open(FileStorage.__file_path, 'r') as filename:
-                data = json.load(filename)
-            for key, value in data.items():
-                cls_name = value['__class__']
-                cls = globals().get(cls_name, None)
-                if cls is not None:
-                    obj_instance = cls(**value)
-                    self.new(obj_instance)
+        try: 
+            with open(self.__file_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                for key, value in data.items():
+                    object = eval(obj_dict['__class__'])(**value)
+                    self.__objects[key] = object
+        except FileNotFoundError:
+            pass
