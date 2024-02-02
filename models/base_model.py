@@ -34,8 +34,8 @@ class BaseModel:
         datetime whenever an object's state changes.
         """
         self.updated_at = datetime.datetime.now()
-        models.storage.save()
-        
+        models.storage.save(self)
+
 
     def to_dict(self):
         """ Converts the instance into a dictionary for serialization. """

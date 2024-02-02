@@ -20,8 +20,8 @@ class HBNBCommand(cmd.Cmd):
         try:
             model = eval(args)
             instance = model()
-            instance.save()
             print(instance.id)
+            instance.save()
         except:
             print("** class doesn't exist **")
 
