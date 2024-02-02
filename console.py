@@ -7,6 +7,10 @@ class HBNBCommand(cmd.Cmd):
     """ cmd module. """
     prompt = '(hbnb) '
 
+
+    def do_destroy(self):
+        return
+
     def do_quit(self, arg):
             return True
 
