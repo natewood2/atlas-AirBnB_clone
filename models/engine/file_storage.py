@@ -30,5 +30,8 @@ class FileStorage:
             with open(FileStorage.__file_path, 'r') as filename:
                 data = json.load(filename)
             for key, value in data.items():
-                obj_instance = BaseModel.from_dict(value)
-                FileStorage.__objects[key] = obj_instance
+                cls_name = value['__class__']
+                cls = globals().get(cls_name, None)
+                if cls is not None:
+                    obj_instance = cls(**value)
+                    self.new(obj_instance)
