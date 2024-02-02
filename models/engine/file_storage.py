@@ -26,6 +26,7 @@ class FileStorage:
 
     def reload(self):
         """Reloads"""
+        self.__objects.clear()
         if os.path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, 'r') as filename:
                 data = json.load(filename)
