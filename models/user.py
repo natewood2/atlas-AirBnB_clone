@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """Module to hold a user class
 """
-from base_model import BaseModel
+from models.base_model import BaseModel
 
 
-class user(BaseModel):
+class User(BaseModel):
     """Class to define a user
     """
 

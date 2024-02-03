@@ -5,6 +5,7 @@ and call the correct method based on user input
 """
 import cmd
 from models.base_model import BaseModel
+from models.user import User
 from models.engine.file_storage import FileStorage
 import models
 from models.__init__ import storage
