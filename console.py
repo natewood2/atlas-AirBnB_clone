@@ -17,11 +17,22 @@ class HBNBCommand(cmd.Cmd):
     Methods:
         do_create(args): Creates an instance of user given class
         do_show(args): Prints the dict of an instance give in args
+        do_destroy(args): Deletes a specific (user given) instance
+        do_all(args): Prints all instances or specific class instances if args given
         do_quit(): Ends the program when user types "quit"
     """
     prompt = '(hbnb) '
 
     def validate_args(self, name, id):
+        """Method to validate args given by user
+
+        Args:
+            name (str): Name of the class to check
+            id (str): id for class instance to check
+
+        Returns:
+            True: if an error was found
+        """
         if not name:
             print("** class name missing **")
             return True
@@ -54,7 +65,8 @@ class HBNBCommand(cmd.Cmd):
         """Method to show the user the str representation of a valid instance
 
         Args:
-            args (str): String of the commands given by the user
+            args (str): Contains the name of the class and
+                the id of the instance to show
         """
         command = args.partition(" ")
         name = command[0]
