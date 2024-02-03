@@ -6,6 +6,11 @@ and call the correct method based on user input
 import cmd
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
+from models.review import Review
+from models.place import Place
+from models.city import City
+from models.amenity import Amenity
 from models.engine.file_storage import FileStorage
 import models
 from models.__init__ import storage
