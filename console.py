@@ -21,6 +21,17 @@ class HBNBCommand(cmd.Cmd):
     """
     prompt = '(hbnb) '
 
+    def validate_args(self, name, id):
+        if not name:
+            print("** class name missing **")
+            return False
+        elif not id:
+            print("** instance id missing **")
+            return False
+        elif name not in globals():
+            print("** class doesn't exist **")
+            return False
+
     def do_create(self, args):
         """ Creates a new instance of BaseModel, saves it
         (to the JSON file) and prints the id.
@@ -48,14 +59,7 @@ class HBNBCommand(cmd.Cmd):
         command = args.partition(" ")
         name = command[0]
         id = command[2]
-        if len(args) == 0:
-            print("** class name missing **")
-            return
-        elif not id:
-            print("** instance id missing **")
-            return
-        elif name not in globals():
-            print("** class doesn't exist **")
+        if not self.validate_args(name, id):
             return
         key = name + "." + id
         try:
@@ -73,14 +77,7 @@ class HBNBCommand(cmd.Cmd):
         command = args.partition(" ")
         name = command[0]
         id = command[2]
-        if len(args) == 0:
-            print("** class name missing **")
-            return
-        elif not id:
-            print("** instance id missing **")
-            return
-        elif name not in globals():
-            print("** class doesn't exist **")
+        if not self.validate_args(name, id):
             return
         key = name + "." + id
         try:
@@ -138,7 +135,6 @@ class HBNBCommand(cmd.Cmd):
         """Used if no command is given by user
         """
         pass
-
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
