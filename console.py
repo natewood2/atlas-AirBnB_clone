@@ -64,6 +64,12 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_destroy(self, args):
+        """Method to delete an instance
+
+        Args:
+            args (str): Contains the name of the class and
+                the id of the instance to delete
+        """
         command = args.partition(" ")
         name = command[0]
         id = command[2]
@@ -82,6 +88,29 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
         except:
             print("** no instance found **")
+
+    def do_all(self, args):
+        """Method to print all instances or all instances of specific class
+
+        Args:
+            args (str): Optional argument to state class of instances to print
+        """
+        obj_dict = storage._FileStorage__objects
+        obj_list = []
+        if not args:
+            for value in obj_dict.values():
+                obj_list.append(f"[{value.__class__.__name__}] ({value.id}) {str(value.to_dict())}")
+            print(obj_list)
+            return
+
+        class_name = args
+        if not any(key.startswith(class_name + ".") for key in obj_dict):
+            print("** class doesn't exist **")
+            return
+        for key, value in obj_dict.items():
+            if class_name in key:
+                obj_list.append(f"[{class_name}] ({value.id}) {str(value.to_dict())}")
+        print(obj_list)
 
     def do_quit(self, arg):
         """Gives the user the ability to end the program
