@@ -24,13 +24,13 @@ class HBNBCommand(cmd.Cmd):
     def validate_args(self, name, id):
         if not name:
             print("** class name missing **")
-            return False
+            return True
         elif not id:
             print("** instance id missing **")
-            return False
+            return True
         elif name not in globals():
             print("** class doesn't exist **")
-            return False
+            return True
 
     def do_create(self, args):
         """ Creates a new instance of BaseModel, saves it
@@ -59,7 +59,7 @@ class HBNBCommand(cmd.Cmd):
         command = args.partition(" ")
         name = command[0]
         id = command[2]
-        if not self.validate_args(name, id):
+        if self.validate_args(name, id):
             return
         key = name + "." + id
         try:
@@ -77,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
         command = args.partition(" ")
         name = command[0]
         id = command[2]
-        if not self.validate_args(name, id):
+        if self.validate_args(name, id):
             return
         key = name + "." + id
         try:
