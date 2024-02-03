@@ -24,7 +24,7 @@ class HBNBCommand(cmd.Cmd):
         do_create(args): Creates an instance of user given class
         do_show(args): Prints the dict of an instance give in args
         do_destroy(args): Deletes a specific (user given) instance
-        do_all(args): Prints all instances or specific class instances if args given
+        do_all(args): Prints all instances or specific class instances
         do_quit(): Ends the program when user types "quit"
     """
     prompt = '(hbnb) '
@@ -64,11 +64,11 @@ class HBNBCommand(cmd.Cmd):
             instance = name()
             print(instance.id)
             instance.save()
-        except:
+        except NameError:
             print("** class doesn't exist **")
 
     def do_show(self, args):
-        """Method to show the user the str representation of a valid instance
+        """Method to show the user the str of a valid instance
 
         Args:
             args (str): Contains the name of the class and
@@ -82,7 +82,7 @@ class HBNBCommand(cmd.Cmd):
         key = name + "." + id
         try:
             print(storage._FileStorage__objects[key])
-        except:
+        except KeyError:
             print("** no instance found **")
 
     def do_destroy(self, args):
@@ -101,14 +101,14 @@ class HBNBCommand(cmd.Cmd):
         try:
             storage._FileStorage__objects.pop(key)
             storage.save()
-        except:
+        except KeyError:
             print("** no instance found **")
 
     def do_all(self, args):
-        """Method to print all instances or all instances of specific class
+        """Method to print all instances or all of specific class
 
         Args:
-            args (str): Optional argument to state class of instances to print
+            args (str): Optional to state class  to print
         """
         obj_dict = storage._FileStorage__objects
         obj_list = []
