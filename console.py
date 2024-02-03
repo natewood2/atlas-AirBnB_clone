@@ -7,7 +7,6 @@ import models
 from models.__init__ import storage
 
 
-class_that_exist = ["BaseModel", "State"]
 class HBNBCommand(cmd.Cmd):
     """ cmd module. """
     prompt = '(hbnb) '
@@ -40,8 +39,9 @@ class HBNBCommand(cmd.Cmd):
         elif not id:
             print("** instance id missing **")
             return
-        elif model not in class_that_exist:
+        if model not in globals():
             print("** class doesn't exist **")
+            return
         key = model + "." + id
         try:
             print(storage._FileStorage__objects[key])
