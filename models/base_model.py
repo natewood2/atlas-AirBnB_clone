@@ -3,8 +3,8 @@
 Base Model Class for AirBnB: The Console
 """
 import uuid
-import models
 import datetime
+import models
 
 
 class BaseModel:
@@ -25,7 +25,7 @@ class BaseModel:
         models.storage.new(self)
 
     def __str__(self):
-        """ Returns a string representation of the instance. """
+        """ Returns a string representation of the instance """
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
@@ -34,9 +34,10 @@ class BaseModel:
         the updated_at attribute with the current
         datetime whenever an object's state changes.
         """
+        from models import storage
         self.updated_at = datetime.datetime.now()
         models.storage.save()
-
+        
 
     def to_dict(self):
         """ Converts the instance into a dictionary for serialization. """

@@ -2,12 +2,15 @@
 """ THE CONSOLE. """
 import cmd
 from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
+import models
 from models.__init__ import storage
 
 
 class HBNBCommand(cmd.Cmd):
     """ cmd module. """
     prompt = '(hbnb) '
+    
 
     def do_create(self, args):
         """ Creates a new instance of BaseModel, saves it
@@ -35,6 +38,9 @@ class HBNBCommand(cmd.Cmd):
             return
         elif not id:
             print("** instance id missing **")
+            return
+        if model not in globals():
+            print("** class doesn't exist **")
             return
         key = model + "." + id
         try:
