@@ -1,4 +1,7 @@
-### AirBnB: The Console:
+## AirBnB: The Console:
+![DALL·E 2024-02-03 17 55 33 - Create an image featuring a console with the Python programming language logo and the Airbnb logo placed next to a serene river  The entire scene shou](https://github.com/natewood2/atlas-AirBnB_clone/assets/143881431/68f5e27e-a72c-4dc3-9331-688aa96630b8)
+
+
 
 We are tasked with making the console for our AirBnB clone. The console is what will manage the modules utilized by our webpage through the use of a JSON-formatted database. Basically a interactive command-line interface for the AirBnB clone project.
 
