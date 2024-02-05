@@ -149,7 +149,8 @@ class HBNBCommand(cmd.Cmd):
         obj_list = []
         if not args:
             for value in obj_dict.values():
-                obj_list.append(f"[{value.__class__.__name__}] ({value.id}) {str(value.to_dict())}")
+                obj_list.append(f"[{value.__class__.__name__}] ({value.id})\
+                                 {str(value.to_dict())}")
             print(obj_list)
             return
 
@@ -159,7 +160,8 @@ class HBNBCommand(cmd.Cmd):
             return
         for key, value in obj_dict.items():
             if class_name in key:
-                obj_list.append(f"[{class_name}] ({value.id}) {str(value.to_dict())}")
+                obj_list.append(f"[{class_name}] ({value.id})\
+                                 {str(value.to_dict())}")
         print(obj_list)
 
     def do_quit(self, arg):
@@ -188,6 +190,7 @@ class HBNBCommand(cmd.Cmd):
         """Used if no command is given by user
         """
         pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
