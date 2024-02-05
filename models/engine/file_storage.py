@@ -14,7 +14,7 @@ from models.amenity import Amenity
 class FileStorage:
     """
     Handles the storage of objects in a file.
-    
+
     Attributes:
         __objects (dict): Cache of objects by <classname>.<id>.
         __file_path (str): Path to the JSON file used for storage.
@@ -25,7 +25,7 @@ class FileStorage:
     def all(self):
         """
         Retrieves all stored objects.
-        
+
         Returns:
             dict: A copy of the objects cache.
         """
@@ -34,7 +34,7 @@ class FileStorage:
     def new(self, obj):
         """
         Adds a new object to the storage.
-        
+
         Parameters:
             obj: The object to be stored.
         """
