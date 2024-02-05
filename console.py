@@ -94,7 +94,11 @@ class HBNBCommand(cmd.Cmd):
         instance = storage._FileStorage__objects[key]
         if hasattr(instance, attr_name):
             attr_type = type(getattr(instance, attr_name))
-            new_value = type(attr_type)(new_value)
+            if attr_type == int:
+                new_value = int(new_value)
+            elif attr_type == float:
+                new_value = float(new_value)
+
         setattr(instance, attr_name, new_value)
         storage.save()
 
