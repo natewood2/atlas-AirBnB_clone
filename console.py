@@ -90,8 +90,9 @@ class HBNBCommand(cmd.Cmd):
         key = name + "." + id
         try:
             instance = storage._FileStorage__objects[key]
-            setattr(instance, attr_name, type(getattr(instance, attr_name))(new_value))
-            instance.save()
+            if hasattr(instance, attr_name):
+                setattr(instance, attr_name, type(getattr(instance, attr_name))(new_value))
+                instance.save()
         except KeyError:
             print("** no instance found **")
 
