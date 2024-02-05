@@ -92,13 +92,11 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
             return
         instance = storage._FileStorage__objects[key]
-        try:
+        if hasattr(instance, attr_name):
             attr_type = type(getattr(instance, attr_name))
             new_value = type(attr_type)(new_value)
-        except (TypeError, AttributeError):
-            new_value = command[3]
         setattr(instance, attr_name, new_value)
-        instance.save()
+        storage.save()
 
     def do_show(self, args):
         """Method to show the user the str of a valid instance
