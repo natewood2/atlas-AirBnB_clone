@@ -74,17 +74,19 @@ class HBNBCommand(cmd.Cmd):
             args (str): <Class name> <id> <attribute to update> "<new value>"
         """
         command = args.split()
-        name = command[0]
-        id = command[1]
-        attr_name = command[2]
-        new_value = command[3]
+        name = command[0] if len(command) > 0 else ""
+        id = command[1] if len(command) > 1 else ""
+        attr_name = command[2] if len(command) > 2 else None
+        new_value = command[3] if len(command) > 3 else None
 
         if self.validate_args(name, id):
             return
-        elif not attr_name:
+        elif attr_name is None:
             print("** attribute name missing **")
-        elif not new_value:
+            return
+        elif new_value is None:
             print("** value missing **")
+            return
         key = name + "." + id
         try:
             instance = storage._FileStorage__objects[key]
