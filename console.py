@@ -67,6 +67,32 @@ class HBNBCommand(cmd.Cmd):
         except NameError:
             print("** class doesn't exist **")
 
+    def do_update(self, args):
+        """Method to update the attribute of an instance
+
+        Args:
+            args (str): <Class name> <id> <attribute to update> "<new value>"
+        """
+        command = args.split()
+        name = command[0]
+        id = command[1]
+        attr_name = command[2]
+        new_value = command[3]
+
+        if self.validate_args(name, id):
+            return
+        elif not attr_name:
+            print("** attribute name missing **")
+        elif not new_value:
+            print("** value missing **")
+        key = name + "." + id
+        try:
+            instance = storage._FileStorage__objects[key]
+            setattr(instance, attr_name, type(getattr(instance, attr_name))(new_value))
+            instance.save()
+        except KeyError:
+            print("** no instance found **")
+
     def do_show(self, args):
         """Method to show the user the str of a valid instance
 
