@@ -91,15 +91,12 @@ class HBNBCommand(cmd.Cmd):
         if key not in storage.all():
             print("** no instance found **")
             return
-        try:
-            instance = storage._FileStorage__objects[key]
+        instance = storage._FileStorage__objects[key]
+        if hasattr(instance, attr_name):
             attr_type = type(getattr(instance, attr_name))
             new_value = type(attr_type)(new_value)
-        except (TypeError, AttributeError):
-            print("** invalid value type for attribute **")
-            return
         setattr(instance, attr_name, new_value)
-        instance.save()
+        storage.save()
 
     def do_show(self, args):
         """Method to show the user the str of a valid instance
