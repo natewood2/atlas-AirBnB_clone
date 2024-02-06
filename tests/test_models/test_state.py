@@ -18,3 +18,9 @@ class TestState(unittest.TestCase):
         state.name = "Washington"
 
         self.assertEqual(state.name, "Washington")
+
+    def test_fake_state(self):
+        state = State()
+        state.name = "FakeState"
+
+        self.assertNotEqual(state.name, "Fakestate")
