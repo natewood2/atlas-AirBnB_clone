@@ -116,7 +116,7 @@ class HBNBCommand(cmd.Cmd):
             return
         key = name + "." + id
         try:
-            print(storage._FileStorage__objects[key])
+            print(storage.all()[key])
         except KeyError:
             print("** no instance found **")
 
