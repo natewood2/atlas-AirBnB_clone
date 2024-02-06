@@ -15,6 +15,7 @@ class TestState(unittest.TestCase):
     def test_amenity_attributes(self):
         """ Testing the amenity attributes. """
         amenity = Amenity()
-        amenity.name = "Wifi"
+        self.assertTrue(hasattr(amenity, ""))
+        self.assertEqual(amenity.name, "")
 
         self.assertEqual(amenity.name, "Wifi")
