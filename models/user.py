@@ -23,4 +23,10 @@ class User(BaseModel):
     last_name = ""
 
     def __init__(self, *args, **kwargs):
+        """Initialize a new User instance
+
+        Note:
+            Calls the constructor of the parent class (BaseModel).
+            Gets id(uuid), created_at, and updated_at from parent
+        """
         super().__init__(*args, **kwargs)
