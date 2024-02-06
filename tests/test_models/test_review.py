@@ -19,10 +19,7 @@ class TestReview(unittest.TestCase):
     def test_Review_attributes(self):
         """ Testing the reviews attributes. """
         review = Review()
-        review.place_id = "AirBnB"
-        review.user_id = "101010"
-        review.text = "Eh."
+        self.assertEqual(review.place_id, "")
+        self.assertEqual(review.user_id, "")
+        self.assertEqual(review.text, "")
 
-        self.assertEqual(review.place_id, "AirBnB")
-        self.assertEqual(review.user_id, "101010")
-        self.assertEqual(review.text, "Eh.")
