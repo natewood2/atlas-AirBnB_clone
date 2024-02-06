@@ -67,3 +67,9 @@ This script defines the HBNBCommand class, which serves as an interactive comman
 ### Looking up BaseModel with Unique ID:
 
 ![](https://media.giphy.com/media/VRGGoyoNOOgBOlNrKW/giphy.gif)
+
+#### Authors
+This is a list of all who contributed to this project. 
+
+- [Nathan Wood](https://github.com/natewood2)
+- [David Alsabrook](https://github.com/DAlsabrook)
