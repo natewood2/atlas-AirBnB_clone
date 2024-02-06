@@ -17,5 +17,3 @@ class TestState(unittest.TestCase):
         amenity = Amenity()
         self.assertTrue(hasattr(amenity, ""))
         self.assertEqual(amenity.name, "")
-
-        self.assertEqual(amenity.name, "Wifi")
