@@ -22,15 +22,9 @@ class TestUser(unittest.TestCase):
     def test_set_values(self):
         """ Testing if the values equal to what they are set too. """
         user = User()
-        user.email = "thisisaemail@yahoo.com"
-        user.password = "thecakeisalie"
-        user.first_name = "Lamar"
-        user.last_name = "Jackson"
-
-        self.assertEqual(user.email, "thisisaemail@yahoo.com")
-        self.assertEqual(user.password, "thecakeisalie")
-        self.assertEqual(user.first_name, "Lamar")
-        self.assertEqual(user.last_name, "Jackson")
-
+        self.assertEqual(user.email, "")
+        self.assertEqual(user.password, "")
+        self.assertEqual(user.first_name, "")
+        self.assertEqual(user.last_name, "")
 if __name__ == '__main__':
     unittest.main()
