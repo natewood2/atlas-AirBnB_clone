@@ -55,7 +55,6 @@ class BaseModel:
         This method updates the updated_at attribute with the current
         datetime whenever an object's state changes.
         """
-        from models import storage
         self.updated_at = datetime.datetime.now()
         models.storage.save()
 
