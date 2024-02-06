@@ -145,7 +145,7 @@ class HBNBCommand(cmd.Cmd):
         Args:
             args (str): Optional to state class  to print
         """
-        obj_dict = storage._FileStorage__objects
+        obj_dict = storage.all()
         obj_list = []
         if not args:
             for value in obj_dict.values():
