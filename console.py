@@ -91,7 +91,7 @@ class HBNBCommand(cmd.Cmd):
         if key not in storage.all():
             print("** no instance found **")
             return
-        instance = storage._FileStorage__objects[key]
+        instance = storage.all()[key]
         if hasattr(instance, attr_name):
             attr_type = type(getattr(instance, attr_name))
             if attr_type == int:
