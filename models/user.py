@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""Module to hold a user class
+"""Module defining the User class.
+
+This module contains the User class, which represents a user entity in the system.
+A User has attributes such as email, password, first name, and last name.
 """
 from models.base_model import BaseModel
 
