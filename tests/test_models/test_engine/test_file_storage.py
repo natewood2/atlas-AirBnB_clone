@@ -6,6 +6,7 @@ from models.__init__ import storage
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 
+
 class TestFileStorage(unittest.TestCase):
     """ Testing File storage. """
 
@@ -24,7 +25,6 @@ class TestFileStorage(unittest.TestCase):
             after_save_content = json.load(f)
 
         self.assertNotEqual(before_save_content, after_save_content)
-
 
     def test_new_and_all(self):
         """ Test that new objects are correctly added to storage. """
