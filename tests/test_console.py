@@ -26,7 +26,7 @@ class TestHBNBCommand(unittest.TestCase):
         """ Clean up after each test method. """
         self.mock_print_patcher.stop()
         self.mock_eval_patcher.stop()
-    
+
     def test_do_create_with_no_args(self):
         """ Test do_create with no arguments to check for error message. """
         self.cmd_instance.do_create('')
@@ -48,4 +48,3 @@ class TestHBNBCommand(unittest.TestCase):
 
     def test_do_create(self):
         """ Testing do create. """
-        
