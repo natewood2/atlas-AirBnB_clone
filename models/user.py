@@ -5,7 +5,16 @@ from models.base_model import BaseModel
 
 
 class User(BaseModel):
-    """Class to define a user
+    """Class to define a User
+
+    Attributes:
+        email (str): The email address of the user.
+        password (str): The password associated with the user's account.
+        first_name (str): The first name of the user.
+        last_name (str): The last name of the user.
+
+    Inherits from:
+        BaseModel: The base class for all models in the application.
     """
 
     email = ""
