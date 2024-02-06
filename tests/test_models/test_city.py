@@ -18,8 +18,5 @@ class TestCity(unittest.TestCase):
     def test_city_attributes(self):
         """ Testing the cities attributes. """
         city = City()
-        city.name = "Seattle"
-        city.state_id = "101010"
-
-        self.assertEqual(city.name, "Seattle")
-        self.assertEqual(city.state_id, "101010")
+        self.assertEqual(hasattr(city.state_id, ""))
+        self.assertEqual(hasattr(city.name, ""))

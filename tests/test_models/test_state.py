@@ -11,13 +11,7 @@ class TestState(unittest.TestCase):
         """ Testing State. """
         state = State()
         self.assertTrue(hasattr(state, "name"))
-
-    def test_state_attributes(self):
-        """ Testing the states attributes. """
-        state = State()
-        state.name = "Washington"
-
-        self.assertEqual(state.name, "Washington")
+        self.assertEqual(state.name, "")
 
     def test_fake_state(self):
         state = State()

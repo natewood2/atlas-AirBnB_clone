@@ -67,6 +67,41 @@ class HBNBCommand(cmd.Cmd):
         except NameError:
             print("** class doesn't exist **")
 
+    def do_update(self, args):
+        """Method to update the attribute of an instance
+
+        Args:
+            args (str): <Class name> <id> <attribute to update> "<new value>"
+        """
+        command = args.split()
+        name = command[0] if len(command) > 0 else ""
+        id = command[1] if len(command) > 1 else ""
+        attr_name = command[2] if len(command) > 2 else None
+        new_value = command[3] if len(command) > 3 else None
+
+        if self.validate_args(name, id):
+            return
+        elif attr_name is None:
+            print("** attribute name missing **")
+            return
+        elif new_value is None:
+            print("** value missing **")
+            return
+        key = name + "." + id
+        if key not in storage.all():
+            print("** no instance found **")
+            return
+        instance = storage.all()[key]
+        if hasattr(instance, attr_name):
+            attr_type = type(getattr(instance, attr_name))
+            if attr_type == int:
+                new_value = int(new_value)
+            elif attr_type == float:
+                new_value = float(new_value)
+
+        setattr(instance, attr_name, new_value)
+        storage.save()
+
     def do_show(self, args):
         """Method to show the user the str of a valid instance
 
@@ -81,7 +116,7 @@ class HBNBCommand(cmd.Cmd):
             return
         key = name + "." + id
         try:
-            print(storage._FileStorage__objects[key])
+            print(storage.all()[key])
         except KeyError:
             print("** no instance found **")
 
@@ -99,7 +134,7 @@ class HBNBCommand(cmd.Cmd):
             return
         key = name + "." + id
         try:
-            storage._FileStorage__objects.pop(key)
+            storage.all().pop(key)
             storage.save()
         except KeyError:
             print("** no instance found **")
@@ -110,11 +145,12 @@ class HBNBCommand(cmd.Cmd):
         Args:
             args (str): Optional to state class  to print
         """
-        obj_dict = storage._FileStorage__objects
+        obj_dict = storage.all()
         obj_list = []
         if not args:
             for value in obj_dict.values():
-                obj_list.append(f"[{value.__class__.__name__}] ({value.id}) {str(value.to_dict())}")
+                obj_list.append(f"[{value.__class__.__name__}] ({value.id})\
+                                 {str(value.to_dict())}")
             print(obj_list)
             return
 
@@ -124,7 +160,8 @@ class HBNBCommand(cmd.Cmd):
             return
         for key, value in obj_dict.items():
             if class_name in key:
-                obj_list.append(f"[{class_name}] ({value.id}) {str(value.to_dict())}")
+                obj_list.append(f"[{class_name}] ({value.id})\
+                                 {str(value.to_dict())}")
         print(obj_list)
 
     def do_quit(self, arg):
@@ -153,6 +190,7 @@ class HBNBCommand(cmd.Cmd):
         """Used if no command is given by user
         """
         pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

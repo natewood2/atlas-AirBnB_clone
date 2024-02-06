@@ -1,4 +1,7 @@
-### AirBnB: The Console:
+## AirBnB: The Console:
+![DALL·E 2024-02-03 17 55 33 - Create an image featuring a console with the Python programming language logo and the Airbnb logo placed next to a serene river  The entire scene shou](https://github.com/natewood2/atlas-AirBnB_clone/assets/143881431/68f5e27e-a72c-4dc3-9331-688aa96630b8)
+
+
 
 We are tasked with making the console for our AirBnB clone. The console is what will manage the modules utilized by our webpage through the use of a JSON-formatted database. Basically a interactive command-line interface for the AirBnB clone project.
 
@@ -16,7 +19,7 @@ This section of code introduces the FileStorage class, designed to manage the se
 - Data Persistence: Utilizes a JSON file (specified by __file_path) as the storage medium. This choice leverages JSON's readable format and compatibility with web technologies.
 - CRUD : Implements methods to add new objects to storage (new), retrieve all objects (all), save all objects to the file (save), and reload objects from the file (reload).
 
-#### console.py:
+#### Console.py:
 
 This script defines the HBNBCommand class, which serves as an interactive command-line interface for the AirBnB clone project. It inherits from Python's cmd.Cmd class, providing a framework for executing predefined commands. The HBNBCommand class is designed to manage instances of various models (like BaseModel, User, State, Review, Place, City, Amenity) through a series of command methods. Key aspects of the HBNBCommand class include:
 - Command Prompt: Sets a custom prompt (hbnb) to signal readiness for user input.
@@ -24,4 +27,26 @@ This script defines the HBNBCommand class, which serves as an interactive comman
 - Input Validation: Contains a method 'validate_args' to ensure valid input for operations that require class names and instance IDs, improving error handling and user feedback.
 - Quit and EOF Handling: Provides do_quit and do_EOF methods to easily exit the command loop in response to "quit" commands or an End-of-File (EOF) signal.
 
+#### Command Format:
 
+```python
+(command) <Class Name> <Instance ID> <Attribute> "<New Value>"
+```
+
+- `(command)`: The command prompt, is set to (hbnb).
+- `<Class Name>`: Name of the class for the instance.
+- `<Instance ID>`: ID of the instance to be manipulated.
+- `<Attribute>`: Attribute to be updated or shown.
+- `"<New Value>"`: New value for the attribute (for the update command).
+
+#### Available Commands:
+
+| Command Description        | Command Format                                      | Explanation                                      |
+|-----------------------------|-----------------------------------------------------|--------------------------------------------------|
+| Create a new instance       | `create <Class Name>`                        | Create a new instance of the specified class and print its ID. |
+| Show instance details       | `show <Class Name> <Instance ID>`            | Show the dictionary representation of the specified instance. |
+| Delete an instance           | `destroy <Class Name> <Instance ID>`         | Delete the specified instance.                   |
+| List all instances           | `all [optional: <Class Name>]`               | Print a list of all instances or instances of a specific class. |
+| Update an attribute          | `update <Class Name> <Instance ID> <Attribute> "<New Value>"` | Update the specified attribute of an instance.   |
+| End the program              | `quit`                                       | End the program and exit the console.            |
+| End the program at EOF       | `[Press Ctrl-D]`                             | End the program when the end of the file is reached. |
