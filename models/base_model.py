@@ -12,8 +12,8 @@ class BaseModel:
 
     Attributes:
         id (str): A unique identifier for each instance.
-        created_at (datetime): The date and time when the instance was created.
-        updated_at (datetime): The date and time when the instance was last updated.
+        created_at (datetime): The date/time when the instance was created.
+        updated_at (datetime): The date/time when the instance was last updated
     """
     def __init__(self, *args, **kwargs):
         """ Init for the BaseModel Class.

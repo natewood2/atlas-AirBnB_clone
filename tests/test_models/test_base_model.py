@@ -6,6 +6,7 @@ from models.base_model import BaseModel
 from unittest.mock import patch
 from datetime import datetime
 
+
 class TestBaseModel(unittest.TestCase):
     """ Defines test cases for the BaseModel class. """
     def test_instance_type(self):
@@ -37,6 +38,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(instance_dict['id'], instance.id)
         self.assertIsInstance(instance_dict['created_at'], str)
         self.assertIsInstance(instance_dict['updated_at'], str)
+
 
 if __name__ == '__main__':
     unittest.main()
