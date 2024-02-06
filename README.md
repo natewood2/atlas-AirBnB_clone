@@ -50,3 +50,20 @@ This script defines the HBNBCommand class, which serves as an interactive comman
 | Update an attribute          | `update <Class Name> <Instance ID> <Attribute> "<New Value>"` | Update the specified attribute of an instance.   |
 | End the program              | `quit`                                       | End the program and exit the console.            |
 | End the program at EOF       | `[Press Ctrl-D]`                             | End the program when the end of the file is reached. |
+
+
+## Demo of The Console:
+
+
+
+### Starting up console:
+
+![](https://media.giphy.com/media/2GcPP91sIuYKIRUXwU/giphy.gif)
+
+### Creating BaseModel:
+
+![](https://media.giphy.com/media/td4vBL6fKjW5JZ25ln/giphy.gif)
+
+### Looking up BaseModel with Unique ID:
+
+![](https://media.giphy.com/media/VRGGoyoNOOgBOlNrKW/giphy.gif)
