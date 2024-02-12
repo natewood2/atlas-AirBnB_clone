@@ -54,7 +54,7 @@ class HBNBCommand(cmd.Cmd):
         (to the JSON file) and prints the id.
 
         Args:
-            args (str): String of the commands given by the user
+            args (str): <Class name>
         """
         # Check if no arguments were provided by the user.
         if len(args) == 0:
@@ -126,8 +126,7 @@ class HBNBCommand(cmd.Cmd):
         """Method to show the user the str of a valid instance
 
         Args:
-            args (str): Contains the name of the class and
-                the id of the instance to show
+            args (str): <Class name> <id>
         """
         command = args.partition(" ")
         name = command[0]
@@ -151,8 +150,7 @@ class HBNBCommand(cmd.Cmd):
         """Method to delete an instance
 
         Args:
-            args (str): Contains the name of the class and
-                the id of the instance to delete
+            args (str): <Class name> <id>
         """
         command = args.partition(" ")
         # Method to delete an instance based on class name and instance ID
@@ -181,7 +179,7 @@ class HBNBCommand(cmd.Cmd):
         """Method to print all instances or all of specific class
 
         Args:
-            args (str): Optional to state class  to print
+            args (str): optional[<Class name>]
         """
         # Retrieve a dictionary of all instances from the storage.
         obj_dict = storage.all()
@@ -219,7 +217,7 @@ class HBNBCommand(cmd.Cmd):
         """Gives the user the ability to end the program
 
         Args:
-            arg (_type_): _description_
+            args (str): quit
 
         Returns:
             Bool: True ends the cmdloop method and stops the console
@@ -227,7 +225,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_EOF(self, arg):
-        """Ends the program if the eof is reached.
+        """Ends the program if the eof is reached
 
         Args:
             arg (_type_): _description_

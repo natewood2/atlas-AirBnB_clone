@@ -6,6 +6,7 @@ from models.base_model import BaseModel
 from unittest.mock import patch
 from datetime import datetime
 
+
 class TestBaseModel(unittest.TestCase):
     """ Defines test cases for the BaseModel class. """
     def test_instance_type(self):
@@ -21,10 +22,13 @@ class TestBaseModel(unittest.TestCase):
     def test_save_method_updates_updated_at(self):
         """Test that the save method updates updated_at."""
         instance = BaseModel()
-        original_updated_at = instance.updated_at
-
+        original = instance.updated_at
+        print(original)
         instance.save()
-        self.assertNotEqual(instance.updated_at, original_updated_at, "updated_at was not updated.")
+        new = instance.updated_at
+        print(original)
+        print(new)
+        self.assertNotEqual(new, original)
 
     def test_to_dict_method(self):
         """Test conversion of instance to dictionary."""
@@ -34,6 +38,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(instance_dict['id'], instance.id)
         self.assertIsInstance(instance_dict['created_at'], str)
         self.assertIsInstance(instance_dict['updated_at'], str)
+
 
 if __name__ == '__main__':
     unittest.main()
