@@ -225,10 +225,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_EOF(self, arg):
-        """Ends the program if the eof is reached
-
-        Args:
-            arg (_type_): _description_
+        """Ends the program when use types ctrl-d
 
         Returns:
             Bool: True ends the cmdloop method and stops the console

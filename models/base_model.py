@@ -66,7 +66,11 @@ class BaseModel:
         models.storage.save()
 
     def to_dict(self):
-        """ Converts the instance into a dictionary for serialization. """
+        """ Converts the instance into a dictionary for serialization.
+
+        Returns:
+            dict: A dictionary representation of the instance.
+        """
         dict_copy = {}
         # Iterates over the instance's attributes.
         for a in vars(self):
