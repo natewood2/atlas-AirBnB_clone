@@ -45,19 +45,27 @@ class FileStorage:
         """
         Serializes and saves objects to the JSON file.
         """
+        # Create a dictionary of object IDs to their serialized (dictionary) form.
         obj_dict = {key: obj.to_dict() for key, obj in self.__objects.items()}
+        # Open the target file in write mode and serialize obj_dict to it.
         with open(self.__file_path, 'w') as filename:
-            json.dump(obj_dict, filename)
+            json.dump(obj_dict, filename) # Write the JSON serialization to the file.
 
     def reload(self):
         """
         Deserializes and loads objects from the JSON file, if it exists.
         """
         try:
+            # Open the JSON file in read mode.
             with open(self.__file_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
+                data = json.load(f) # Load and deserialize the JSON data into a dictionary.
+                # Iterate through the items in the deserialized data.
                 for key, value in data.items():
+                    # Dynamically create an instance of the class specified in the data,
+                    # passing the attributes as keyword arguments.
                     object = eval(value['__class__'])(**value)
+                    # Store the newly created object in the __objects dictionary.
                     self.__objects[key] = object
         except FileNotFoundError:
+            # If the JSON file does not exist, do nothing.
             pass
